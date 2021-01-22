@@ -26,8 +26,6 @@ function Feed() {
   }, []);
 
   const sendPost = (e) => {
-    e.preventDefault();
-
     db.collection("posts").add({
       name: "Achraf Oudani",
       description: "this is great",
