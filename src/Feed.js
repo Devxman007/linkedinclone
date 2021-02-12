@@ -7,7 +7,7 @@ import EventNoteIcon from "@material-ui/icons/EventNote";
 import CalendarViewDayIcon from "@material-ui/icons/CalendarViewDay";
 import InputOptions from "./InputOptions";
 import Post from "./Post";
-import { db } from "./app/firebase";
+import { db } from "./firebase";
 import firebase from "firebase";
 function Feed() {
   const [posts, setPosts] = useState([]);
