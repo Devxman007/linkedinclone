@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import HeaderOption from "./HeaderOption";
@@ -8,10 +8,11 @@ import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import ChatIcon from "@material-ui/icons/Chat";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import { logout } from "./features/userSlice";
+import { logout, selectUser } from "./features/userSlice";
 import { auth } from "./firebase";
 
 function Header() {
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const logoutOfApp = () => {
     dispatch(logout());
@@ -36,7 +37,7 @@ function Header() {
         <HeaderOption Icon={ChatIcon} title="Messaging" />
         <HeaderOption Icon={NotificationsIcon} title="Notifications" />
         <HeaderOption
-          avatar="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+          avatar={user.profilePic}
           title="Me"
           onclick={logoutOfApp}
         />
