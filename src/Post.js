@@ -1,5 +1,5 @@
 import { Avatar } from "@material-ui/core";
-import React from "react";
+import React, { forwardRef } from "react";
 import InputOptions from "./InputOptions";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import CommentIcon from "@material-ui/icons/Comment";
@@ -7,11 +7,11 @@ import ShareIcon from "@material-ui/icons/Share";
 import SendIcon from "@material-ui/icons/Send";
 import "./Post.css";
 
-function Post({ name, description, message, photoUrl }) {
+const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
   return (
-    <div className="post">
+    <div ref={ref} className="post">
       <div className="post__header">
-        <Avatar />
+        <Avatar src={photoUrl}>{name[0]}</Avatar>
         <div className="post__info">
           <h2>{name}</h2>
           <p>{description}</p>
@@ -28,6 +28,6 @@ function Post({ name, description, message, photoUrl }) {
       </div>
     </div>
   );
-}
+});
 
 export default Post;
